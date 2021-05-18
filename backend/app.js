@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3005 } = process.env;
 const MONGO_DB = 'mongodb://localhost:27017/mestodb';
 
 const express = require('express');

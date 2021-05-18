@@ -59,31 +59,14 @@ class MestoApi {
       body: JSON.stringify(avatar),
     }).then(this._checkResponse);
   }
-  sign({ email, password }, endPoint) {
-    return fetch(this._baseUrl + endPoint, {
-      method: "POST",
-      headers: this._headers,
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    }).then(this._checkResponse);
-  }
-  checkToken(jwt) {
-    return fetch(this._baseUrl + "/users/me", {
-      headers: {
-        headers: this._headers,
-        Authorization: `Bearer ${jwt}`,
-      },
-    }).then(this._checkResponse);
-  }
 }
 const mestoApi = new MestoApi({
-  baseUrl: "https://api.front15.smistav.nomoredomains.icu",
+  //baseUrl: "https://api.front15.smistav.nomoredomains.icu",
+  baseUrl: "http://localhost:3005",
   headers: {
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    "Content-Type": "application/json",
-    'credentials': 'include',
+    'authorization': `Bearer ${localStorage.getItem("jwt")}`,
+    'Content-Type': 'application/json',
+    //'credentials': 'include',
   },
 });
 

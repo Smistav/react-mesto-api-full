@@ -23,16 +23,17 @@ class AuthApi {
     return fetch(this._baseUrl + "/users/me", {
       headers: {
         headers: this._headers,
-        Authorization: `Bearer ${jwt}`,
+        'authorization': `Bearer ${jwt}`,
       },
     }).then(this._checkResponse);
   }
 }
 
 const authApi = new AuthApi({
-  baseUrl: "https://api.front15.smistav.nomoredomains.icu",
+  //baseUrl: "https://api.front15.smistav.nomoredomains.icu",
+  baseUrl: 'http://localhost:3005',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 export default authApi;
