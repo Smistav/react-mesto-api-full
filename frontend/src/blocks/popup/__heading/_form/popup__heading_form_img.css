@@ -1,0 +1,21 @@
+.popup__heading_form_img {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  position: absolute;
+  left: 0;
+  bottom: -25px;
+  margin: 0;
+}
+
+@media screen and (max-width: 510px) {
+  .popup__heading_form_img {
+    max-width: 238px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ffffff;
+    margin: 0;
+  }
+}

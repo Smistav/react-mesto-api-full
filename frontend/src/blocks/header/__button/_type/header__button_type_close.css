@@ -1,0 +1,4 @@
+.header__button_type_close {
+  background-image: url("../../../../images/closeicon.svg");
+  background-size: contain;
+}

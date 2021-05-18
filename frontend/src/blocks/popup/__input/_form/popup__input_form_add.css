@@ -1,0 +1,13 @@
+.popup__input_form_add::placeholder {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #c4c4c4;
+}
+
+@media screen and (max-width: 429px) {
+  .popup__input_form_add {
+    margin-bottom: 20px;
+  }
+}

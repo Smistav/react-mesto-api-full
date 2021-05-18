@@ -1,0 +1,8 @@
+@media screen and (max-width: 370px) {
+  .header__button_type_popup {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 18px;
+  }
+}

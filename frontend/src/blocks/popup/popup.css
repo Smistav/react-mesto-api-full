@@ -1,0 +1,19 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s linear 0.5s;
+  opacity: 0;
+}
+
+.popup:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.5;
+}

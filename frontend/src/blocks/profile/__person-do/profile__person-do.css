@@ -1,0 +1,27 @@
+.profile__person-do {
+  max-width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 655px) {
+  .profile__person-do {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__person-do {
+    font-size: 14px;
+    line-height: 17px;
+    justify-self: center;
+  }
+}

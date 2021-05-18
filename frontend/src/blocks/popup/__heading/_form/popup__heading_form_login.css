@@ -1,0 +1,10 @@
+.popup__heading_form_login {
+  color: #fff;
+  margin: 0 0 50px 0;
+  text-align: center;
+}
+@media screen and (max-width: 510px) {
+  .popup__heading_form_login {
+    margin: 0 0 40px 0;
+  }
+}

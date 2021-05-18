@@ -1,0 +1,25 @@
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+.profile__avatar:before {
+  content: "";
+  background-image: url("../../../images/editpencil.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar:hover:before {
+  opacity: 0.8;
+  cursor: pointer;
+}

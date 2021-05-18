@@ -1,0 +1,5 @@
+.popup__button_form_login_disabled {
+  cursor: pointer;
+  background: #ffffff;
+  opacity: 0.85;
+}

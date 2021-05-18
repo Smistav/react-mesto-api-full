@@ -1,0 +1,23 @@
+.popup__container_form_login {
+  background-color: #000;
+  position: relative;
+  left: 0;
+  top: 0;
+  transform: none;
+  width: 100%;
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 36px 0 36px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding-bottom: 112px;
+  height: auto;
+}
+@media screen and (max-width: 320px) {
+  .popup__container_form_login {
+    margin-top: 40px;
+    padding-bottom: 77px;
+  }
+}

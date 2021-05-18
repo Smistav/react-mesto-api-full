@@ -1,0 +1,22 @@
+.popup__container_form_img {
+  background-color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: unset;
+  max-width: unset;
+  border-radius: unset;
+  display: unset;
+  flex-direction: unset;
+  padding: unset;
+  box-sizing: unset;
+  height: unset;
+}
+
+@media screen and (max-width: 510px) {
+  .popup__container_form_img {
+    max-width: 240px;
+    padding: 0;
+  }
+}

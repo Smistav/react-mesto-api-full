@@ -1,0 +1,16 @@
+.header__button_type_authmobile {
+  width: 24px;
+  height: 21px;
+  background-image: url("../../../../images/line.svg"), url("../../../../images/line.svg"),
+    url("../../../../images/line.svg");
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: 0 top, 0 center, 0 bottom;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 370px) {
+  .header__button_type_authmobile {
+    display: block;
+  }
+}
