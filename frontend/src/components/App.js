@@ -3,8 +3,7 @@ import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main";
 import ImagePopup from "./ImagePopup";
-import mestoApi from "../utils/MestoApi";
-import authApi from "../utils/AuthApi";
+import api from "../utils/api";
 import EditProfilePopup from "./EditProfilePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditAvatarPopup from "./EditAvatarPopup";
@@ -45,7 +44,7 @@ function App() {
 
   React.useEffect(() => {
     if (isLogged){
-    mestoApi
+    api
       .getUserInfo(localStorage.getItem("jwt"))
       .then((userInfo) => {
         setCurrentUser(userInfo);
@@ -57,7 +56,7 @@ function App() {
   }, [isLogged]);
   React.useEffect(() => {
     if (isLogged){
-    mestoApi
+    api
       .getInitialCards(localStorage.getItem("jwt"))
       .then((cards) => {
         setCards(cards);
@@ -71,7 +70,7 @@ function App() {
     function checkToken() {
       if (localStorage.getItem("jwt")) {
         const jwt = localStorage.getItem("jwt");
-        authApi
+        api
           .checkToken(jwt)
           .then((data) => {
             setEmail(data.email);
@@ -100,7 +99,7 @@ function App() {
   }
   function handleUpdateUser(propsUser) {
     setIsLoading(true);
-    mestoApi
+    api
       .setUserInfo(propsUser, localStorage.getItem("jwt"))
       .then((userInfo) => {
         setCurrentUser(userInfo);
@@ -113,7 +112,7 @@ function App() {
   }
   function handleUpdateAvatar(propAvatar) {
     setIsLoading(true);
-    mestoApi
+    api
       .setUserAvatar(propAvatar, localStorage.getItem("jwt"))
       .then((avatar) => {
         setCurrentUser(avatar);
@@ -127,7 +126,7 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser._id);
-    mestoApi
+    api
       .changeLikeCardStatus(card._id, !isLiked,localStorage.getItem("jwt"))
       .then((newCard) => {
         setCards((state) =>
@@ -144,7 +143,7 @@ function App() {
   }
   function handleConfirmDeleteSubmit() {
     setIsLoading(true);
-    mestoApi
+    api
       .deleteCard(isConfirmDelete._id,localStorage.getItem("jwt"))
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== isConfirmDelete._id));
@@ -158,7 +157,7 @@ function App() {
 
   function handleAddPlaceSubmit(newCard) {
     setIsLoading(true);
-    mestoApi
+    api
       .addNewCard(newCard, localStorage.getItem("jwt"))
       .then((newCard) => {
         setCards([newCard, ...cards]);
@@ -186,7 +185,7 @@ function App() {
   }
   function handleLogin(data) {
     setIsLoading(true);
-    authApi
+    api
       .sign(data, "/signin")
       .then((jwt) => {
         if (jwt) {
@@ -208,7 +207,7 @@ function App() {
   }
   function handleRegister(onRegister) {
     setIsLoading(true);
-    authApi
+    api
       .sign(onRegister, "/signup")
       .then(() => {
         setIsLoading(false);
