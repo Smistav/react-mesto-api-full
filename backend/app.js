@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { PORT = 3005 } = process.env;
+const { PORT = 3000 } = process.env;
 const MONGO_DB = 'mongodb://localhost:27017/mestodb';
 
 const express = require('express');
@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-// const rateLimit = require('express-rate-limit');
+const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const { celebrate, Joi } = require('celebrate');
 const cors = require('cors');
@@ -24,8 +24,8 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-// const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
-// app.use(limiter);
+const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 });
+app.use(limiter);
 
 mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
