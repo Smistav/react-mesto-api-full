@@ -41,16 +41,32 @@ function App() {
   const [isLogged, setIsLogged] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const history = useHistory();
+  const [cards, setCards] = React.useState([]);
+
   React.useEffect(() => {
+    if (isLogged){
     mestoApi
-      .getUserInfo()
+      .getUserInfo(localStorage.getItem("jwt"))
       .then((userInfo) => {
         setCurrentUser(userInfo);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+    }
+  }, [isLogged]);
+  React.useEffect(() => {
+    if (isLogged){
+    mestoApi
+      .getInitialCards(localStorage.getItem("jwt"))
+      .then((cards) => {
+        setCards(cards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, [isLogged]);
   React.useEffect(() => {
     function checkToken() {
       if (localStorage.getItem("jwt")) {
@@ -85,7 +101,7 @@ function App() {
   function handleUpdateUser(propsUser) {
     setIsLoading(true);
     mestoApi
-      .setUserInfo(propsUser)
+      .setUserInfo(propsUser, localStorage.getItem("jwt"))
       .then((userInfo) => {
         setCurrentUser(userInfo);
         closeAllPopups();
@@ -98,7 +114,7 @@ function App() {
   function handleUpdateAvatar(propAvatar) {
     setIsLoading(true);
     mestoApi
-      .setUserAvatar(propAvatar)
+      .setUserAvatar(propAvatar, localStorage.getItem("jwt"))
       .then((avatar) => {
         setCurrentUser(avatar);
         closeAllPopups();
@@ -109,21 +125,10 @@ function App() {
       });
   }
 
-  const [cards, setCards] = React.useState([]);
-  React.useEffect(() => {
-    mestoApi
-      .getInitialCards()
-      .then((cards) => {
-        setCards(cards);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i === currentUser._id);
     mestoApi
-      .changeLikeCardStatus(card._id, !isLiked)
+      .changeLikeCardStatus(card._id, !isLiked,localStorage.getItem("jwt"))
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -140,7 +145,7 @@ function App() {
   function handleConfirmDeleteSubmit() {
     setIsLoading(true);
     mestoApi
-      .deleteCard(isConfirmDelete._id)
+      .deleteCard(isConfirmDelete._id,localStorage.getItem("jwt"))
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== isConfirmDelete._id));
         closeAllPopups();
@@ -154,7 +159,7 @@ function App() {
   function handleAddPlaceSubmit(newCard) {
     setIsLoading(true);
     mestoApi
-      .addNewCard(newCard)
+      .addNewCard(newCard, localStorage.getItem("jwt"))
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();

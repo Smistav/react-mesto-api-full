@@ -8,54 +8,61 @@ class MestoApi {
     }
     return Promise.reject(`Ошибка ${res.status}`);
   }
-  getInitialCards() {
-    return fetch(this._baseUrl + "/cards", { headers: this._headers }).then(
+  getInitialCards(jwt) {
+    return fetch(this._baseUrl + "/cards", { headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` }}).then(
       this._checkResponse
     );
   }
-  addNewCard({ name, link }) {
+  addNewCard({ name, link },jwt) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
-      headers: this._headers,
+      headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` },
       body: JSON.stringify({
         name,
         link,
       }),
     }).then(this._checkResponse);
   }
-  getUserInfo() {
-    return fetch(this._baseUrl + "/users/me", { headers: this._headers }).then(
+  getUserInfo(jwt) {
+    return fetch(this._baseUrl + "/users/me", { headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` }}).then(
       this._checkResponse
     );
   }
-  setUserInfo({ name, about }) {
+  setUserInfo({ name, about },jwt) {
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
-      headers: this._headers,
+      headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` },
       body: JSON.stringify({
         name,
         about,
       }),
     }).then(this._checkResponse);
   }
-  deleteCard(id) {
+  deleteCard(id,jwt) {
     return fetch(this._baseUrl + "/cards/" + id, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` },
     }).then(this._checkResponse);
   }
 
-  changeLikeCardStatus(id, isLike) {
+  changeLikeCardStatus(id, isLike, jwt) {
     return fetch(this._baseUrl + "/cards/likes/" + id, {
       method: isLike ? "PUT" : "DELETE",
-      headers: this._headers,
+       headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` }
     }).then(this._checkResponse);
   }
 
-  setUserAvatar(avatar) {
+  setUserAvatar(avatar,jwt) {
     return fetch(this._baseUrl + "/users/me/avatar", {
       method: "PATCH",
-      headers: this._headers,
+      headers: {'Content-Type': 'application/json', 
+    'authorization': `Bearer ${jwt}` },
       body: JSON.stringify(avatar),
     }).then(this._checkResponse);
   }
@@ -63,11 +70,11 @@ class MestoApi {
 const mestoApi = new MestoApi({
   //baseUrl: "https://api.front15.smistav.nomoredomains.icu",
   baseUrl: "http://localhost:3005",
-  headers: {
-    'authorization': `Bearer ${localStorage.getItem("jwt")}`,
-    'Content-Type': 'application/json',
-    //'credentials': 'include',
-  },
+  // headers: {
+  //   'authorization': `Bearer ${localStorage.getItem("jwt")}`,
+  //   'Content-Type': 'application/json',
+  //   //'credentials': 'include',
+  // },
 });
 
 export default mestoApi;
