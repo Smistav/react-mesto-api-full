@@ -85,8 +85,8 @@ class Api {
   }
 }
 const api = new Api({
-  //baseUrl: "https://api.front15.smistav.nomoredomains.icu",
-  baseUrl: "http://localhost:3005"
+  baseUrl: "https://api.front15.smistav.nomoredomains.icu",
+  //baseUrl: "http://localhost:3005"
 });
 
 export default api;
