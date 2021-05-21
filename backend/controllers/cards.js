@@ -38,6 +38,10 @@ module.exports.deleteCard = (req, res, next) => {
     });
 };
 
+// Может быть это изза того что Вы проверяете
+// cards/id/likes и тогда будет 404 всегда
+// а у меня cards/likes/id  и тогда феншуй
+
 module.exports.likeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
     req.params.cardId,
