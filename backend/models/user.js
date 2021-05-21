@@ -22,15 +22,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator(ava) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        return /^https?:\/\/(www{3}\.)?[a-z0-9-]{3,20}\.[a-z]{2,6}[-._~:/[\]?#@!$&'()*+,;=a-z0-9]*/g.test(ava);
-=======
         return /^https?:\/\/(www\.)?[a-z0-9-]{2,20}\.[a-z]{2,6}[-._~:/[\]?#@!$&'()*+,;=a-z0-9]*/.test(ava);
->>>>>>> 679ce94ceb9e20dfb0c80143c86cb00d0a9e2e53
-=======
-        return /^https?:\/\/(www\.)?[a-z0-9-]{2,20}\.[a-z]{2,6}[-._~:/[\]?#@!$&'()*+,;=a-z0-9]*/.test(ava);
->>>>>>> 679ce94ceb9e20dfb0c80143c86cb00d0a9e2e53
       },
       message: 'url id not true',
     },
