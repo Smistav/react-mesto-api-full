@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     validate: {
       validator(ava) {
-        return /https?:\/\/(www\.)?[a-z0-9-.]{3,20}[a-z]{2,6}[-._~:/[\]?#@!$&'()*+,;=a-z0-9]*/g.test(ava);
+        return /^https?:\/\/(www{3}\.)?[a-z0-9-]{3,20}\.[a-z]{2,6}[-._~:/[\]?#@!$&'()*+,;=a-z0-9]*/g.test(ava);
       },
     },
     required: true,
