@@ -3,7 +3,7 @@
 Проект реализует галерею фотографий различных мест в России.
 Стэк технологий: HTML,CSS,JS, React, Node js, Express, MongoDb
 
-### Link frontend: https://front15.smistav.nomoredomains.monster/
+### https://front15.smistav.nomoredomains.monster/
 
 включает в себя:
 
@@ -16,5 +16,14 @@
 Для локальной работы проекта:
 
 1. Клонируйте репозиторий
-2. Установите зависимости npm install
-3. Запустите проект npm run start
+2. Установите зависимости
+
+```sh
+npm install
+```
+
+3. Запустите проект
+
+```sh
+npm run start
+```
