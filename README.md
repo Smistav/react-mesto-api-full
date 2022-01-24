@@ -6,9 +6,6 @@
 
 HTML,CSS,JS, React, Node js, Express, MongoDb
 
-### Ссылка на проект
-
-https://front15.smistav.nomoredomains.monster/
 
 ### Для развертывания проекта:
 
